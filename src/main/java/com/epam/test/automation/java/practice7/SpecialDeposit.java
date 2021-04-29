@@ -23,8 +23,7 @@ public class SpecialDeposit extends Deposit{
             endSum = baseAmount.add(monthlyIncome);
             baseAmount = endSum;
         }
-        BigDecimal totalIncome = endSum.subtract(depositedSum);
-        return totalIncome;
+        return endSum.subtract(depositedSum);
     }
 
 }
