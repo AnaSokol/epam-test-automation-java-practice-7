@@ -39,7 +39,7 @@ public class Client {
     }
     public BigDecimal getIncomeByNumber (int number){
         if (number >= deposits.length || deposits[number] == null){
-            return new BigDecimal("0").setScale(2);
+            return new BigDecimal("0");
         }
         return deposits[number].income();
     }
