@@ -25,7 +25,7 @@ public class LongDeposit extends Deposit {
                 baseAmount = endSum;
             }
         }
-        BigDecimal totalIncome = endSum.subtract(depositedSum).setScale(2);
+        BigDecimal totalIncome = endSum.subtract(depositedSum);
         return totalIncome;
     }
 }
