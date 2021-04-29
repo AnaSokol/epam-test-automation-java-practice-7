@@ -19,7 +19,7 @@ public class SpecialDeposit extends Deposit{
         BigDecimal bd100 = new BigDecimal(String.valueOf(100));
         for (int i = 0; i < period; i++){
             BigDecimal interest = new BigDecimal(String.valueOf(i+1)).divide(bd100);
-            monthlyIncome = (baseAmount.multiply(interest)).setScale(2, RoundingMode.HALF_DOWN);
+            monthlyIncome = (baseAmount.multiply(interest)).setScale(2, RoundingMode.HALF_EVEN);
             endSum = baseAmount.add(monthlyIncome);
             baseAmount = endSum;
         }
