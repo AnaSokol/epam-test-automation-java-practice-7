@@ -20,7 +20,7 @@ public class LongDeposit extends Deposit {
         for (int i = 0; i < period; i++){
             if (i > 5){
                 BigDecimal interest = new BigDecimal(String.valueOf(0.15));
-                monthlyIncome = (baseAmount.multiply(interest)).setScale(2, RoundingMode.HALF_EVEN);
+                monthlyIncome = (baseAmount.multiply(interest)).setScale(2, RoundingMode.HALF_DOWN);
                 endSum = baseAmount.add(monthlyIncome);
                 baseAmount = endSum;
             }
