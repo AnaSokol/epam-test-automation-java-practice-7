@@ -18,7 +18,7 @@ public class BaseDeposit extends Deposit{
         BigDecimal monthlyIncome;
         BigDecimal interest = new BigDecimal(String.valueOf(0.05));
         for (int i = 0; i < period; i++){
-            monthlyIncome = (baseAmount.multiply(interest)).setScale(2, RoundingMode.HALF_EVEN);
+            monthlyIncome = (baseAmount.multiply(interest)).setScale(2, RoundingMode.HALF_DOWN);
             endSum = baseAmount.add(monthlyIncome);
             baseAmount = endSum;
         }
