@@ -9,19 +9,18 @@ public class BaseDeposit extends Deposit{
         super(amount, period);
     }
 
-    @Override
+     @Override
     public BigDecimal income() {
-        BigDecimal depositedSum = super.getAmount();
-        int period = super.getPeriod();
-        BigDecimal baseAmount = depositedSum;
-        BigDecimal endSum = depositedSum;
         BigDecimal monthlyIncome;
-        BigDecimal interest = new BigDecimal(String.valueOf(0.05));
+        BigDecimal totalIncome = BigDecimal.ZERO;
+        BigDecimal baseAmount = getAmount();
+        int period = getPeriod();
+        BigDecimal interest = BigDecimal.valueOf(0.05);
         for (int i = 0; i < period; i++){
-            monthlyIncome = (baseAmount.multiply(interest)).setScale(2, RoundingMode.HALF_EVEN);
-            endSum = baseAmount.add(monthlyIncome);
-            baseAmount = endSum;
+            monthlyIncome = (baseAmount.multiply(interest));
+            baseAmount = baseAmount.add(monthlyIncome);
+            totalIncome = totalIncome.add(monthlyIncome);
         }
-        return endSum.subtract(depositedSum);
+        return totalIncome.setScale(2, RoundingMode.HALF_EVEN);
     }
 }
