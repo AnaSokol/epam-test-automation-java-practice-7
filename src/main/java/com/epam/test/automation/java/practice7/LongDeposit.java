@@ -18,14 +18,19 @@ public class LongDeposit extends Deposit {
         BigDecimal endSum = depositedSum;
         BigDecimal interest = new BigDecimal(String.valueOf(0.15));
 
-        for (int i = 0; i < period; i++){
-            if (i > 5){
-                monthlyIncome = (baseAmount.multiply(interest));
-                endSum = baseAmount.add(monthlyIncome);
-                baseAmount = endSum;
-            }
+        if (period <= 6){
+            return BigDecimal.ZERO;
         }
-        BigDecimal totalIncome = endSum.subtract(depositedSum);
-        return totalIncome.setScale(2, RoundingMode.HALF_EVEN);
+        else {
+            for (int i = 0; i < period; i++){
+                if (i > 5){
+                    monthlyIncome = (baseAmount.multiply(interest));
+                    endSum = baseAmount.add(monthlyIncome);
+                    baseAmount = endSum;
+                }
+            }
+            BigDecimal totalIncome = endSum.subtract(depositedSum);
+            return totalIncome.setScale(2, RoundingMode.HALF_EVEN);
+        }
     }
 }
