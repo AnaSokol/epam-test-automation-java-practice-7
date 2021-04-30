@@ -1,7 +1,6 @@
 package com.epam.test.automation.java.practice7;
 
 import java.math.BigDecimal;
-import java.math.RoundingMode;
 
 public class Client {
     public Deposit[] deposits;
@@ -20,12 +19,12 @@ public class Client {
         return false;
     }
     public BigDecimal totalIncome(){
-        BigDecimal totalIncome = new BigDecimal("0");
+        BigDecimal totalIncome = BigDecimal.ZERO;
         for (int i = 0; i < deposits.length; i++){
             if (deposits[i] == null) break;
             totalIncome = totalIncome.add(deposits[i].income());
         }
-        return totalIncome.setScale(2, RoundingMode.HALF_EVEN);
+        return totalIncome;
     }
     public BigDecimal maxIncome (){
         BigDecimal maxIncome = deposits[0].income();
@@ -35,13 +34,12 @@ public class Client {
                 maxIncome = deposits[i].income();
             }
         }
-        return maxIncome.setScale(2, RoundingMode.HALF_EVEN);
+        return maxIncome;
     }
     public BigDecimal getIncomeByNumber (int number){
         if (number >= deposits.length || deposits[number] == null){
-            return new BigDecimal("0");
+            return BigDecimal.ZERO;
         }
-        return deposits[number].income().setScale(2, RoundingMode.HALF_EVEN);
+        return deposits[number].income();
     }
-
 }
