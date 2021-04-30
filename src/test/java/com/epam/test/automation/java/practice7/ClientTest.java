@@ -15,46 +15,6 @@ public class ClientTest {
     Client deposits = new Client();
 
     @Test
-    public void testAddDeposit1() {
-        boolean actual = deposits.addDeposit(bd1);
-        boolean expected = true;
-        assertEquals(actual, expected);
-
-    }
-    @Test
-    public void testAddDeposit10() {
-        deposits.addDeposit(bd1);
-        deposits.addDeposit(bd2);
-        deposits.addDeposit(bd3);
-        deposits.addDeposit(bd1);
-        deposits.addDeposit(bd2);
-        deposits.addDeposit(bd3);
-        deposits.addDeposit(ld1);
-        deposits.addDeposit(ld2);
-        deposits.addDeposit(sd1);
-        boolean actual = deposits.addDeposit(sd1);
-        boolean expected = true;
-        assertEquals(actual, expected);
-    }
-    @Test
-    public void testAddDeposit11() {
-        deposits.addDeposit(bd1);
-        deposits.addDeposit(bd2);
-        deposits.addDeposit(bd3);
-        deposits.addDeposit(bd1);
-        deposits.addDeposit(bd2);
-        deposits.addDeposit(bd3);
-        deposits.addDeposit(ld1);
-        deposits.addDeposit(ld2);
-        deposits.addDeposit(sd1);
-        deposits.addDeposit(sd1);
-        boolean addDep11 = deposits.addDeposit(bd1);
-        boolean expected = false;
-        assertEquals(addDep11, expected);
-
-    }
-
-    @Test
     public void testTotalIncome() {
         deposits.addDeposit(bd1);
         deposits.addDeposit(bd2);
@@ -66,54 +26,16 @@ public class ClientTest {
         BigDecimal expected = new BigDecimal("1909.90");
         assertEquals(actual, expected);
     }
-
-    @Test
-    public void testMaxIncome() {
-        deposits.addDeposit(bd1);
-        deposits.addDeposit(bd2);
-        deposits.addDeposit(bd3);
-        deposits.addDeposit(ld1);
-        deposits.addDeposit(ld2);
-        deposits.addDeposit(sd1);
-        BigDecimal actual = deposits.maxIncome();
-        BigDecimal expected = new BigDecimal("1020.29");
-        assertEquals(actual, expected);
-    }
-
+    
     @Test
     public void testGetIncomeByNumber1() {
-        deposits.addDeposit(bd1);
-        deposits.addDeposit(bd2);
-        deposits.addDeposit(bd3);
-        deposits.addDeposit(ld1);
-        deposits.addDeposit(ld2);
-        deposits.addDeposit(sd1);
         BigDecimal actual = deposits.getIncomeByNumber(3);
         BigDecimal expected = new BigDecimal("0");
         assertEquals(actual, expected);
     }
-
-    @Test
-    public void testGetIncomeByNumber2() {
-        deposits.addDeposit(bd1);
-        deposits.addDeposit(bd2);
-        deposits.addDeposit(bd3);
-        deposits.addDeposit(ld1);
-        deposits.addDeposit(ld2);
-        deposits.addDeposit(sd1);
-        BigDecimal actual = deposits.getIncomeByNumber(4);
-        BigDecimal expected = new BigDecimal("520.88");
-        assertEquals(actual, expected);
-    }
-
+    
     @Test
     public void testGetIncomeByNumberOutOfReach() {
-        deposits.addDeposit(bd1);
-        deposits.addDeposit(bd2);
-        deposits.addDeposit(bd3);
-        deposits.addDeposit(ld1);
-        deposits.addDeposit(ld2);
-        deposits.addDeposit(sd1);
         BigDecimal actual = deposits.getIncomeByNumber(13);
         BigDecimal expected = new BigDecimal("0");
         assertEquals(actual, expected);
