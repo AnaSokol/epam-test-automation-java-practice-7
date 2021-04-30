@@ -12,19 +12,20 @@ public class LongDeposit extends Deposit {
     @Override
     public BigDecimal income() {
         BigDecimal monthlyIncome;
-        int period = super.getPeriod();
-        BigDecimal depositedSum = super.getAmount();
+        int period = getPeriod();
+        BigDecimal depositedSum = getAmount();
         BigDecimal baseAmount = depositedSum;
         BigDecimal endSum = depositedSum;
+        BigDecimal interest = new BigDecimal(String.valueOf(0.15));
 
         for (int i = 0; i < period; i++){
             if (i > 5){
-                BigDecimal interest = new BigDecimal(String.valueOf(0.15));
-                monthlyIncome = (baseAmount.multiply(interest)).setScale(2, RoundingMode.HALF_EVEN);
+                monthlyIncome = (baseAmount.multiply(interest));
                 endSum = baseAmount.add(monthlyIncome);
                 baseAmount = endSum;
             }
         }
-        return endSum.subtract(depositedSum);
+        BigDecimal totalIncome = endSum.subtract(depositedSum);
+        return totalIncome.setScale(2, RoundingMode.HALF_EVEN);
     }
 }
